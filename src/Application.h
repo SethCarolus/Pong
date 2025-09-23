@@ -1,5 +1,9 @@
+#pragma once
 #include <stdlib.h>
 
+
+#define WINDOW_HEIGHT 800
+#define WINDOW_WIDTH 1000
 
 struct Application 
 {

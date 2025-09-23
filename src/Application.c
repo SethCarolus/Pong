@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "../vendor/raylib/include/raylib.h"
+#include "Paddle.h"
 
 struct Application* create_application(const char* name) {
     struct Application* application = (struct Application*) malloc(sizeof(struct Application));
@@ -7,22 +8,27 @@ struct Application* create_application(const char* name) {
 }
 
 void run_application(struct Application* application) {
-    InitWindow(1000, 800, "Pong");
+    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pong");
+
+    struct Paddle player = create_paddle(10, 400, 20, 100, WHITE, KEY_W, KEY_S);
+    struct Paddle opponent = create_paddle(970, 400, 20, 100, GREEN, KEY_UP, KEY_DOWN);
+
 
     while (!WindowShouldClose())
     {
-        loop();
+        BeginDrawing();
+            ClearBackground(BLACK);
+
+            on_update_paddle(&player);
+            on_update_paddle(&opponent);
+
+            draw_paddle(&player);
+            draw_paddle(&opponent);
+        EndDrawing();
     }
 
     CloseWindow();
 
-}
-
-void loop() {
-        BeginDrawing();
-            ClearBackground(BLACK);
-            DrawText("Pong Game", 0, 0, 20, WHITE);
-        EndDrawing();
 }
 
 void destroy_application(struct Application* application) {
