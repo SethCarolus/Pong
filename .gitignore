@@ -1,0 +1,31 @@
+# Premake generated files
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vcproj
+*.cbp
+*.workspace
+Makefile
+# Add other generated project file extensions as needed for your target build systems
+Pong.make
+Makefile
+.vscode
+
+# Build output directories
+bin/
+build/
+obj/
+# Add other common build output directories
+
+# Operating system and editor specific files
+.DS_Store
+Thumbs.db
+*.user
+*.suo
+*.opensdf
+*.sdf
+*.ipch
+
+# Any other specific files or directories you want to ignore
+vendor
