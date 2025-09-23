@@ -1,18 +1,9 @@
-#include "../vendor/raylib/include/raylib.h"
+#include "Application.h"
 
 int main(void)
 {
-    InitWindow(1000, 800, "Pong");
-
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-            ClearBackground(BLACK);
-            DrawText("Pong Game", 0, 0, 20, WHITE);
-        EndDrawing();
-    }
-
-    CloseWindow();
-
+    struct Application* application = create_application("Pong");
+    run_application(application);
+    destroy_application(application);
     return 0;
 }
