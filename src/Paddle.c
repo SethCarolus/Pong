@@ -5,7 +5,7 @@
 
 struct Paddle create_paddle(const int x, const int y, const int width, const int height, const Color color, const int up_key, const int down_key) {
 
-    struct Paddle paddle = { {x, y, width, height}, color, up_key, down_key };
+    struct Paddle paddle = { {x, y, width, height}, color, up_key, down_key, 0};
     return paddle;
 }
 

@@ -11,7 +11,7 @@ struct Ball create_ball(const int x, const int y, const int width, const int hei
     return ball;
 }
 
-void on_update_ball(struct Ball* ball, const struct Paddle* player, const struct Paddle* opponent) {
+void on_update_ball(struct Ball* const ball, struct Paddle * const player, struct Paddle* const opponent) {
     float dt = GetFrameTime();
 
     if (CheckCollisionRecs(ball->rect, player->rect)) {
@@ -38,6 +38,12 @@ void on_update_ball(struct Ball* ball, const struct Paddle* player, const struct
     if (ball->rect.y <  0) ball->rect.y = 0;
     if (ball->rect.y + ball->rect.height > GetScreenHeight()) ball->rect.y = GetScreenHeight() - ball->rect.height;
 
+    if (ball->rect.x < 0) {
+        opponent->score += 1;
+    }
+    else if (ball->rect.x > GetScreenWidth()) {
+        player->score += 1;
+    }
 
     if (ball->rect.x < 0 || ball->rect.x > GetScreenWidth()) {
         ball->rect.x = GetScreenWidth() / 2;
